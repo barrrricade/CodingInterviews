@@ -4,6 +4,10 @@ Application was well completed however interviewer was not satisfied with my ver
 ## Opinion of the Ekohe interview
 Interview was very bland, only consisting of textbook questions. Interviewer (Lead engineer) was not enthusiastic of company. HR replies only the last question asked in email.
 
+### contacts
+Anne - anne@ekohe.com
+Mel - https://ekohe.com/mel
+
 -------------------------------------------
 # Blog
 
