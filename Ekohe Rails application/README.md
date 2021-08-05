@@ -1,7 +1,7 @@
-##Rails application for Ekohe in ShangHai. June 2021
+## Rails application for Ekohe in ShangHai. June 2021
 Application was well completed however interviewer was not satisfied with my verbal responses.
 
-##Opinion of the Ekohe interview
+## Opinion of the Ekohe interview
 Interview was very bland, only consisting of textbook questions. Interviewer (Lead engineer) was not enthusiastic of company. HR replies only the last question asked in email.
 
 -------------------------------------------
