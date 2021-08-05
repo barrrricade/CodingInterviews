@@ -1,0 +1,67 @@
+body {
+  margin-bottom:200px; // for footer
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: space-between;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  padding: 0px 50px;
+  margin-top: 60px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+.footer-article {
+  font-weight: medium;
+  font-size: 26px;
+}
+
+.footer-info {
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-social-icon {
+  height: 25px;
+  margin: 5px;
+}
+
+.footer-social-icon:hover {
+  transform: translate(0, -3px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fade {
+  color: #000;
+}
+
+#email-icon {
+    cursor: pointer;
+}
+
+// inserted into html avoid confusion
+#my-email {
+  // position: fixed;
+  // bottom: 5px;
+}
+
+
+.sample {
+  color: red;
+}
+

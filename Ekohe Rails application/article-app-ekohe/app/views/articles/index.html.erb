@@ -1,0 +1,85 @@
+<div class="container" style="margin-bottom: 30px; margin-top: 30px;">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h1>The <%= image_tag "Article_archives_icon.png", class: "AA-logo"%>rticle <%= image_tag "Article_archives_icon.png", class: "AA-logo" %>rchives</h1>
+      <h2 style="margin-left: 20px; margin-top: 10px;">Welcome: <%= @user.name.capitalize %></h2>
+      <h5 style="margin-left: 35px;">What would you like to do today?</h5>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <table style="width:100%">
+        <tr>
+          <th style="width: 40%">Title</th>
+          <th style="width: 10%">View</th>
+          <th style="width: 15%">Author</th>
+          <th style="width: 15%">Publish Date</th>
+          <th style="width: 20%">Actions</th>
+        </tr>
+        <% @articles.each do |article| %>
+          <% if article.isPublic %>
+          <tr>
+            <td><%= link_to "#{article.title}", article_path(article) %></td>
+            <td><p><%= article.view_count %></p></td>
+            <td><%= @all_users.find(article.user_id).name.capitalize %></td>
+            <td><%= article.publishDate %></td>
+            <td>
+
+              <% if article.user_id == current_user.id %>
+                <%= link_to edit_article_path(article) do%>
+                  <%= image_tag "icons/pen.png", alt: "edit", class: "action-icons"%>
+                <% end %>
+                |
+                <%= link_to article_path(article), method: :delete  do%>
+                  <%= image_tag "icons/trash.png", alt: "delete", class: "action-icons"%>
+                <% end %>
+              <% else %>
+                <%= image_tag "icons/pen.png", alt: "edit", class: "inactive-icons"%>
+                |
+                <%= image_tag "icons/trash.png", alt: "delete", class: "inactive-icons"%>
+              <% end %>
+            </td>
+          </tr>
+
+          <% end %>
+        <% end %>
+      </table>
+      <h3>Private articles</h3>
+      <table style="width:100%">
+        <tr>
+          <th style="width: 40%">Title</th>
+          <th style="width: 10%">View </th>
+          <th style="width: 15%">Author</th>
+          <th style="width: 15%">Publish Date</th>
+          <th style="width: 20%">Actions</th>
+        </tr>
+        <% @articles.each do |article| %>
+        <% if !article.isPublic && article.user_id == current_user.id%>
+        <tr>
+          <td><%= link_to "#{article.title}", article_path(article) %></td>
+          <td><p><%= article.view_count %></p></td>
+          <td><%= @all_users.find(article.user_id).name.capitalize %></td>
+          <td><%= article.publishDate %></td>
+           <td>
+              <%= link_to edit_article_path(article) do %>
+                <%= image_tag "icons/pen.png", alt: "edit", class: "action-icons"%>
+              <% end %>
+              |
+              <%= link_to article_path(article), method: :delete  do %>
+              <%= image_tag "icons/trash.png", alt: "delete", class: "action-icons"%>
+              <% end %>
+            </td>
+        </tr>
+        <% end %>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>
+

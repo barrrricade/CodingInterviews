@@ -1,0 +1,8 @@
+<h1 class="title-heading">edit article</h1>
+
+
+<% if @article.user_id == current_user.id%>
+  <%= render "shared/article_form" %>
+<% else %>
+  <h1>Sorry, You are not the owner</h1>
+<% end %>

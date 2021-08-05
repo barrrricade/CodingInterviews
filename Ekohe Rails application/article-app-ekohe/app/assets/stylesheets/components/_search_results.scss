@@ -1,0 +1,36 @@
+.search-results-overlay {
+  // position is absolute
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+
+#results > h1 {
+  color: white;
+}
+
+#results > p {
+  color: white;
+}
+
+.exit-icon {
+  position: absolute;
+  right: 100px;
+  height: 25px;
+}
+
+.exit-icon:hover {
+  transform: translate(0, -3px);
+}
+
+.color-white {
+  color: white;
+}
+
+.form-display{
+  display: flex;
+}
+
+.search-btn {
+  margin-left: 10px;
+}

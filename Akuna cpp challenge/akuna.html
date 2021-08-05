@@ -1,0 +1,82 @@
+<div id="263j9ojgb7r-instruction"><p>ALU is not the normal Arithmetic Logic Unit, at Akuna, we mean "Akuna Lego Unit". :) We use these simple units to create our world class trading engines.</p>
+
+  <p>To allow you to peek into our design, here it is:</p>
+
+  <pre><code class="language-cpp">UNITS: 1
+    a := sum
+    INPUTS: 2
+    CONNECTIONS: 3
+    input/0 -- a/in/0
+    input/1 -- a/in/1
+    a/out/0 -- result
+    VALUES: 3
+    input/0 := 3
+    input/1 := 5
+    input/0 := 7
+  </code></pre>
+
+  <p>The input is divided into four sections.</p>
+
+  <p>The first section is "UNITS", it tells you how many units there are in total. We won't use character '/' in the name, as we use this character as the separator.</p>
+
+  <p>In the following lines, they're of the format "unit-name := unit-type". The unit name will be used below. We have following supported unit types right now:</p>
+
+  <ol>
+    <li>"sum" , it has two inputs and one output. The output is the sum of two input values.</li>
+    <li>"negate", it has only one input and one output. The output is the negation of the input value.</li>
+    <li>"max", it has two inputs and one output. The output is the maximum of two input values.</li>
+    <li>"min", it has two inputs and one output. The output is the minimum of two input values.</li>
+    <li>"mul", it has two inputs and one output. The output is the multiplication of two inputs values.</li>
+  </ol>
+
+  <p>&nbsp;</p>
+
+  <p>The second section is "INPUTS", it tells you how many inputs we should use. They're named in the format of "input/0", "input/1" etc.</p>
+
+  <p>&nbsp;</p>
+
+  <p>The third section is "CONNECTIONS", it tells you how these units and inputs are wired together.</p>
+
+  <p>In the following lines, they're of the format "start-label -- end-label".</p>
+
+  <p>The label could be "input/0", "input/1" or "node-name/in/0", "node-name/in/1", or "node-name/out/0", literally as you can guess, it means we have a wire starting from the start label to the end label.</p>
+
+  <p>Note that there's a special label named "result", you guess it right, it's the final result.</p>
+
+  <p>We guarantee that there's no loop connections, meaning e.g. the output connects to a previous node's input.</p>
+
+  <p>&nbsp;</p>
+
+  <p>The fourth section is "VALUES", it will try to change the values on different inputs. We would only update the input labels here, so you don't need to worry about changing the internal labels such as "a/in/0" directly. For each input change, try to output the final result value on standard output. Here's something we need to explain a little bit, when you just hit the first line "input/0 := 3", at that moment, "input/1" is still &nbsp;uninitialized, so the final result is uninitialized as well, so we can't give any output yet. Then we have the next line "input/1 := 5", now we have all inputs initialized properly. So the final result is 8. Then the following line changes the "input/0" to value 7, obviously the final result should be 7 + 5 = 12.</p>
+
+  <p>Note that the value type is simply integer, it could be negative though. No floats need to be &nbsp;handled.</p>
+
+  <p>&nbsp;</p>
+
+  <p>So the whole output for above ALUs would be</p>
+
+  <pre><code>8
+  12</code></pre>
+
+  <p>OK. A picture is better than thousands words.</p>
+
+  <p><img src="https://s3.amazonaws.com/istreet-assets/lL0MYDmBc8x7qtXw4DRhUA/units_sum.png" style="width: 458px;height: 184px;"></p>
+
+  <p>&nbsp;</p>
+
+  <p>We could also have no ALUs at all. e.g.</p>
+
+  <p><img src="https://s3.amazonaws.com/istreet-assets/Pe2-SnJDlJu6TVB-ERch-Q/units.png" style="width: 343px;height: 120px;"></p>
+
+  <p>Then any input value change would result in a valid result.</p>
+
+  <p>&nbsp;</p>
+
+  <p>NOTE&nbsp;that one input could be connected to several units at the same time.</p>
+
+  <p>Also NOTE: one unit's output could be another unit's input.</p>
+
+  <p>To make your life easier, we have implemented the "input_parser" class so that you don't need to deal with the tedious parsing work from STDIN.</p>
+
+  <p>&nbsp;</p>
+</div>

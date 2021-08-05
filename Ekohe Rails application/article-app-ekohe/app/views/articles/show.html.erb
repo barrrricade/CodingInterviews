@@ -1,0 +1,27 @@
+<% if @article.isPublic || (!@article.isPublic && @article.user_id == current_user.id)%>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <h1 style="margin: 20px 0 20px 0;"><%= @article.title %></h1>
+        <div style="display: flex">
+          <h5 style="margin-right: 10px;">By:</h5>
+          <p><%= @user.name.capitalize %></p>
+        </div>
+        <div style="display: flex">
+          <h5 style="margin-right: 10px;">Published on:</h5>
+          <p><%= @article.publishDate %></p>
+        </div>
+        <h5>Article: </h5>
+        <div class="article-container">
+          <p>
+            <%= @article.content %>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% else %>
+<h1>Sorry, article is private and you are not the user</h1>
+<% end %>

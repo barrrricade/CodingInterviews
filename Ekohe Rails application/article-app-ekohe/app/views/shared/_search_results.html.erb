@@ -1,0 +1,32 @@
+<div class="search-results-overlay" style="position: absolute; z-index: 10;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div id="results" style="margin-left: 150px">
+          <%= image_tag "icons/cancel.png", alt: "github logo", class: "exit-icon"%>
+          <h1 style="margin: 50px 0 20px 20px;">Search Results:</h1>
+          <div style="margin-left: 50px">
+            <% if params[:query].present? %>
+              <% @article_search.each do |article| %>
+                <% person = @all_users.where(name: article.content)[0] %>
+                <% if person.present? %>
+                  <h4 class="color-white">Author: <%= person.name.capitalize %></h4>
+                  <p class="color-white">Titles by <%= person.name.capitalize %>:</p>
+                  <% @articles.where(user_id: person.id).each do |articlee| %>
+                    <p class="color-white"><%= link_to articlee.title, article_path(articlee.id) %></p>
+                  <% end %>
+                <% else %>
+                  <% if article.present? %>
+                  <!-- the array below removes the user id that is also in the search results -->
+                    <h4 class="color-white"> <%= link_to article.content[0..-3], article_path(article.searchable_id) %></h4>
+                    <p class="color-white" style="padding-left: 20px;">Aritcle by: <%= @all_users.find(Article.find(article.searchable_id).user_id).name.capitalize %></p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+  <%= image_tag "Article_archives_icon.png" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+      <li class="nav-item active">
+        <%= link_to root_path, class: "nav-link" do%>
+        <%= image_tag "icons/home.png", class: "home-icon nav-icon" %>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to new_article_path, class: "nav-link" do%>
+        <%= image_tag "icons/add.png", class: "add-icon nav-icon"%>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <div class="search nav-link">
+          <%= image_tag "icons/search.png", class: "search-icon"%>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <div class="search nav-link">
+          <%= render 'shared/search' %>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <%= image_tag "icons/avatar.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Action", "#", class: "dropdown-item" %>
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

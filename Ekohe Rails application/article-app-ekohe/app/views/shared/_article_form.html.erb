@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-9">
+
+      <%= simple_form_for(@article) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :title,
+          required: true,
+          autofocus: true,
+          input_html: { autocomplete: "John Smith" },
+          label: "Give your article a title:"%>
+
+          <%= f.input :isPublic, as: :boolean,
+          checked_value: 'true', unchecked_value: 'false',
+          label: "Would you like it to be public?"
+           %>
+
+          <%= f.input :publishDate %>
+
+          <%= f.input :content, as: :text,
+          autofocus: true,
+          label: "Create your article"%>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Save" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
